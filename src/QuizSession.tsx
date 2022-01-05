@@ -94,9 +94,54 @@ function QuizSession() {
     // 임시로 1초간 타임 아웃.
     await new Promise((resolve) => setTimeout(resolve, 1000))
 
+    const initialData = [
+      {
+        text: 'apple',
+        meaning: 'a. 사과'
+      },
+      {
+        text: 'brick',
+        meaning: 'n. 벽돌'
+      },
+      {
+        text: 'completion',
+        meaning: 'n. 완성, 성취'
+      },
+      {
+        text: 'obstacle',
+        meaning: 'n. 장애물'
+      },
+      {
+        text: 'horn',
+        meaning: 'n. 뿔, 경적'
+      },
+      {
+        text: 'dough',
+        meaning: 'n. 밀가루 반죽'
+      },
+      {
+        text: 'leap',
+        meaning: 'v. 뛰다, 급증하다.'
+      },
+      {
+        text: 'pearl',
+        meaning: 'n. 진주, 진주색'
+      },
+      {
+        text: 'tourism',
+        meaning: 'n. 관광, 관광 사업'
+      },
+      {
+        text: 'persisent',
+        meaning: 'a. 지속적인, 끈질긴'
+      }
+    ]
     // TODO
-    // quizList를 아래 링크에서 단어를 불러와서 동적으로 생성한다.
-    // https://solution-tmp.s3.ap-northeast-2.amazonaws.com/vocabs.json
+    // initialData를 State 타입으로 변경 후 리턴한다.
+    // quizList[].selections 을 만드는 조건은
+    // 해당 단어의 뜻 하나와 다른 단어의 뜻 둘을 포함하여
+    // 3지 선다형 뜻 찾기 문제 보기로 변환한다.
+    // 아래 데이터는 예시 데이터이므로 삭제.
     return {
       isCompleted: false,
       correctCount: 0,
@@ -132,7 +177,6 @@ function QuizSession() {
   }, [initalLoaded])
 
   const quizSelected = (selected: string) => {
-    // TODO
     if (state == null) return
 
     const newState = quizSessionReducer(state, {
