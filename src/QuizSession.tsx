@@ -48,6 +48,17 @@ function quizSessionReducer(state: State, action: Action) {
   // 예를 들어, 퀴즈 결과가 생성되고
   // 맞은 혹은 틀린 개수가 업데이트 되고,
   // 다음 퀴즈로 넘어가야 함.
+
+  if (state.quizList.length - 1 === state.currentIndex) state.isCompleted = true
+
+  if (state.quizList[state.currentIndex].answer === action.payload.selected) {
+    state.correctCount += 1
+    state.currentIndex++
+  } else {
+    state.inCorrectCount += 1
+    state.currentIndex++
+  }
+
   const newState = { ...state }
   return newState
 }
