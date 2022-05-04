@@ -10,6 +10,7 @@
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "axios": "^0.27.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "6",
@@ -40,5 +41,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "https://solution-tmp.s3.ap-northeast-2.amazonaws.com"
 }
