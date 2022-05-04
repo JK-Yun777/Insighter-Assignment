@@ -16,3 +16,4 @@
 - 재사용 가능한 코드 설계
 - 주요 도메인 로직에 대한 unittest
 - 목적이 명료하게 드러나는 commit 단위 및 메세지
+# Insighter-Assignment
