@@ -142,25 +142,44 @@ function QuizSession() {
     // 해당 단어의 뜻 하나와 다른 단어의 뜻 둘을 포함하여
     // 3지 선다형 뜻 찾기 문제 보기로 변환한다.
     // 아래 데이터는 예시 데이터이므로 삭제.
+
+    const quizList = []
+    const selectionList = []
+
+    for (let i = 0; i < initialData.length; i++) {
+      selectionList.push(initialData[i].meaning)
+    }
+
+    for (let i = 0; i < initialData.length; i++) {
+      const quizzes = {
+        index: i,
+        text: initialData[i].text,
+        answer: initialData[i].meaning,
+        selections: getSelections(selectionList, initialData[i].meaning)
+      }
+      quizList.push(quizzes)
+    }
+
+    function getSelections(selectionList: any, text: string) {
+      const result = [text]
+      const maxLength = 3
+
+      while (maxLength > result.length) {
+        const randomStr = Math.floor(Math.random() * selectionList.length)
+        if (result.indexOf(selectionList[randomStr]) === -1) {
+          result.push(selectionList[randomStr])
+        }
+      }
+
+      return result.sort(() => Math.random() - 0.5)
+    }
+
     return {
       isCompleted: false,
       correctCount: 0,
       inCorrectCount: 0,
       currentIndex: 0,
-      quizList: [
-        {
-          index: 0,
-          text: 'apple',
-          answer: 'n. 사과',
-          selections: ['n. 사과', 'n. 밀가루 반죽']
-        },
-        {
-          index: 1,
-          text: 'brick',
-          answer: 'n. 벽돌',
-          selections: ['n. 벽돌', 'v. 뛰다, 급증하다']
-        }
-      ],
+      quizList,
       quizResults: []
     }
   }
