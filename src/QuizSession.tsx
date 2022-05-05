@@ -87,11 +87,6 @@ function quizSessionReducer(state: State, action: Action) {
 // View
 function QuizSessionView(state: State, onClick: (selected: string) => void) {
   function QuizView(quiz: Quiz) {
-    // const articleStyle = {
-    //   marginTop: '16px',
-    //   padding: '8px',
-    //   background: '#efefef'
-    // }
     return (
       <article className='quiz-container'>
         <header className='quiz-text'>{quiz.text}</header>

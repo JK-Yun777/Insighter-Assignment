@@ -20,7 +20,18 @@ function Result() {
           {quizResult?.map((value: any, idx: any) => {
             const { selected, isCorrect, question, createdAt, quizIndex } = value
             if (isCorrect) {
-              return <ul key={createdAt + quizIndex}>{`질문: ${question} | 답변: ${selected}`}</ul>
+              return (
+                <article className='word-container'>
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td key={question + quizIndex}>{question}</td>
+                        <td key={selected + createdAt}>{selected}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </article>
+              )
             }
           })}
         </div>
@@ -29,7 +40,18 @@ function Result() {
           {quizResult?.map((value: any, idx: any) => {
             const { selected, isCorrect, question, createdAt } = value
             if (!isCorrect) {
-              return <ul key={createdAt + idx}>{`질문: ${question} | 답변: ${selected}`}</ul>
+              return (
+                <article className='word-container'>
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td key={question + idx}>{question}</td>
+                        <td key={selected + createdAt}>{selected}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </article>
+              )
             }
           })}
         </div>
