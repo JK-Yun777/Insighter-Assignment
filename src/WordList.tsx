@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import './index.css'
 
 const getWords = async () => {
   try {
@@ -28,9 +29,14 @@ interface Word {
 
 function WordView(word: Word) {
   return (
-    <div key={word.text}>
-      {word.text} / {word.meaning}
-    </div>
+    <article className='word-container'>
+      <table>
+        <tr>
+          <td key={word.text}>{word.text}</td>
+          <td key={word.meaning}>{word.meaning}</td>
+        </tr>
+      </table>
+    </article>
   )
 }
 
@@ -76,10 +82,14 @@ function WordList() {
 
   return (
     <section>
-      {wordlist.map((word) => WordView(word))}
       <Link to='/' style={linkStyle}>
-        홈으로
+        HOME
       </Link>
+      <header className='wordlist-hearder'>
+        <div className='word'>Word</div>
+        <div className='meaning'>Meaning</div>
+      </header>
+      {wordlist.map((word) => WordView(word))}
     </section>
   )
 }

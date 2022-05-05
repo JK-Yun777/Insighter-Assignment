@@ -4,6 +4,7 @@ body {
     'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(190, 227, 241);
 }
 
 code {
@@ -29,4 +30,47 @@ code {
 .wrong-answer-head {
   color: red;
   text-align: center;
+}
+
+.word-container {
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.wordlist-hearder {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  font-size: large;
+  margin: 20px 0 20px 0;
+}
+
+.word {
+  padding-top: 20px;
+  margin-right: 65px;
+}
+
+.meaning {
+  padding-top: 20px;
+  margin-left: 65px;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+table tr td {
+  font-size: 14px;
+  border: 1px solid #dddddd;
+  width: 200px;
+  height: 46px;
+  text-align: center;
+  color: rgb(95, 95, 95);
+  background: #fff;
+  font-size: 18px;
+  font-family: 'Nanum';
+  font-weight: 600;
 }
