@@ -87,14 +87,14 @@ function quizSessionReducer(state: State, action: Action) {
 // View
 function QuizSessionView(state: State, onClick: (selected: string) => void) {
   function QuizView(quiz: Quiz) {
-    const articleStyle = {
-      marginTop: '16px',
-      padding: '8px',
-      background: '#efefef'
-    }
+    // const articleStyle = {
+    //   marginTop: '16px',
+    //   padding: '8px',
+    //   background: '#efefef'
+    // }
     return (
-      <article style={articleStyle}>
-        <header>{quiz.text}</header>
+      <article className='quiz-container'>
+        <header className='quiz-text'>{quiz.text}</header>
         {quiz.selections.map((sel, idx) => {
           return (
             <button key={idx} onClick={() => onClick(sel)}>
@@ -110,11 +110,19 @@ function QuizSessionView(state: State, onClick: (selected: string) => void) {
 
   return (
     <section>
-      <div>완료 여부: {state.isCompleted ? '완료' : '미완료'}</div>
-      <div>맞은 개수 {state.correctCount}</div>
-      <div>틀린 개수 {state.inCorrectCount}</div>
-      {state.isCompleted ? <Link to='/'>홈으로</Link> : QuizView(currentQuiz)}
-      {state.isCompleted && <Link to='/result'>결과 보기</Link>}
+      <div className='quiz-header-container'>
+        <div>완료 여부: {state.isCompleted ? '완료' : '미완료'}</div>
+        <div>맞은 개수 {state.correctCount}</div>
+        <div>틀린 개수 {state.inCorrectCount}</div>
+      </div>
+      <div>
+        <span className='home-link'>
+          {state.isCompleted ? <Link to='/'>HOME</Link> : QuizView(currentQuiz)}
+        </span>
+        <span className='result-link'>
+          {state.isCompleted && <Link to='/result'>결과 보기</Link>}
+        </span>
+      </div>
     </section>
   )
 }

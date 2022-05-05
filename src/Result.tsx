@@ -13,7 +13,6 @@ function Result() {
 
   return (
     <article>
-      <header>결과 보기</header>
       <Link to='/'>HOME</Link>
       <main className='main-container'>
         <div className='answer'>

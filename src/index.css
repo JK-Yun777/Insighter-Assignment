@@ -74,3 +74,36 @@ table tr td {
   font-family: 'Nanum';
   font-weight: 600;
 }
+
+.quiz-header-container {
+  margin-bottom: 20px;
+}
+
+.quiz-container {
+  width: 700px;
+  height: 400px;
+  margin: auto;
+  background-color: white;
+  border-radius: 20px;
+}
+
+.quiz-text {
+  padding: 50px 0 80px 0;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+button {
+  margin: 0 10px 20px;
+  font-size: 15px;
+  padding: 15px 40px;
+  border-radius: 5px;
+}
+
+.home-link {
+  margin: 0 10px 0 15px;
+}
+
+.result-link {
+  margin-left: 10px;
+}
