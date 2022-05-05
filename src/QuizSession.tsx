@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useStore } from './store'
 
 // State
 type Quiz = {
@@ -15,6 +16,7 @@ type QuizResult = {
   answer: string // 정답
   selected: string // 선택한 답
   isCorrect: boolean // 정답여부
+  question: string
 }
 
 type State = {
@@ -53,13 +55,32 @@ function quizSessionReducer(state: State, action: Action) {
 
   if (state.quizList[state.currentIndex].answer === action.payload.selected) {
     state.correctCount += 1
+    const passedQuestion = {
+      quizIndex: state.currentIndex,
+      createdAt: new Date(),
+      isCorrect: true,
+      selected: action.payload.selected,
+      question: state.quizList[state.currentIndex].text,
+      answer: state.quizList[state.currentIndex].answer
+    }
+    state.quizResults.push(passedQuestion)
     state.currentIndex++
   } else {
     state.inCorrectCount += 1
+    const failuredQuestion = {
+      quizIndex: state.currentIndex,
+      createdAt: new Date(),
+      isCorrect: false,
+      selected: action.payload.selected,
+      question: state.quizList[state.currentIndex].text,
+      answer: state.quizList[state.currentIndex].answer
+    }
+    state.quizResults.push(failuredQuestion)
     state.currentIndex++
   }
 
   const newState = { ...state }
+
   return newState
 }
 
@@ -93,6 +114,7 @@ function QuizSessionView(state: State, onClick: (selected: string) => void) {
       <div>맞은 개수 {state.correctCount}</div>
       <div>틀린 개수 {state.inCorrectCount}</div>
       {state.isCompleted ? <Link to='/'>홈으로</Link> : QuizView(currentQuiz)}
+      {state.isCompleted && <Link to='/result'>결과 보기</Link>}
     </section>
   )
 }
@@ -218,6 +240,9 @@ function QuizSession() {
     })
     setState(newState)
   }
+
+  const getQuizResult = useStore((state) => state.getQuizResult)
+  getQuizResult(state?.quizResults)
 
   return <div>{state ? QuizSessionView(state, quizSelected) : '로딩중...'}</div>
 }

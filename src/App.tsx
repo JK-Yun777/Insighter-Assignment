@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom'
 import Home from './Home'
 import QuizSession from './QuizSession'
 import WordList from './WordList'
+import Result from './Result'
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='quiz' element={<QuizSession />} />
         <Route path='wordlist' element={<WordList />} />
+        <Route path='result' element={<Result />} />
       </Routes>
     </section>
   )
